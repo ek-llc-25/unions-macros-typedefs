@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include "inventory.h"
 
+#define SQUARE_BAD(x) ((x) * (x))
+
+#define DEBUG_PRINT(var) \
+    (do { \
+        printf("DEBUG: %s = %d (line %d)\n", #var, var, __LINE__); \
+     } while(0))
+
 int main(void) {
     struct inv_item_t best_armor = create_armor(
         "This is not the best armor in the world, this is just a tribute",
@@ -32,6 +39,12 @@ int main(void) {
         print_item_info(inventory[i]);
         printf("\n");
     }
+
+    int result1 = SQUARE_BAD(3 + 2); // 3 + 2 * 3 + 2 = 3 + (2 * 3) + 2 // UPS!
+    printf("SQUARE_BAD(3 * 2) = %d\n", result1);
+
+    int result2 = (SQUARE_BAD((3 + 2))); // (3 + 2) * (3 + 2) = 25
+    printf("SQUARE_BAD((3 * 2)) = %d\n", result2);
 
     return 0;
 }

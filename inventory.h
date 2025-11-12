@@ -19,6 +19,12 @@ enum effect_type {
     MANA,
 };
 
+// Vi definerer en makro til at konvertere effektens navn til en string
+// Vi bruger den ternære operator, ... ? ... : ... for at få if-else på expression-niveau
+// Det gør vi fordi EFFECT_AS_STR() bliver indsat der hvor den bliver brugt, i stedet for at blive kaldt som funktion
+// Vi pakker alle forekomster af 'eff' og hele returværdien godt ind i parenteser for en sikkerheds skyld.
+#define EFFECT_AS_STR(eff) ((eff) == LIFE ? "Life" : ((eff) == MANA ? "Mana" : "Unknown"))
+
 struct consumable_t {
     enum effect_type effect_type;
     int amount;

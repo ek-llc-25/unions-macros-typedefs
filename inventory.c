@@ -69,8 +69,13 @@ void print_item_info(struct inv_item_t item) {
             break;
         case ITEM_CONSUMABLE:
             printf(" Type: Consumable\n");
-            printf(" Effect: %s\n",
-                item.data.as_consumable.effect_type == LIFE ? "Life" : "Mana");
+            // Det her kode er ikke særlig fremtidssikret, fordi hvad nu hvis
+            // man finder på flere slags effekter som consumables har (fx
+            // happiness, poison, eller en kombination af life + mana), så
+            // skal der være plads til en tredje og en fjerde mulighed:
+            // printf(" Effect: %s\n",
+            //    item.data.as_consumable.effect_type == LIFE ? "Life" : "Mana");
+            printf(" Effekt: %s\n", EFFECT_AS_STR(item.data.as_consumable.effect_type));
             printf(" Amount: %d\n", item.data.as_consumable.amount);
             printf(" Uses left: %d\n", item.data.as_consumable.uses_left);
             break;
