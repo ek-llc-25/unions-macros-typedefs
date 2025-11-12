@@ -50,5 +50,6 @@ struct inv_item_t create_weapon(const char *name, int dmg, int dur);
 struct inv_item_t create_armor(const char *name, int ac, int dur);
 struct inv_item_t create_life_potion(int amount, int uses_left);
 struct armor_t *get_armor_stats(struct inv_item_t *item);
+void print_item_info(struct inv_item_t item);
 
 #endif //UNIONSJOV_INVENTORY_H

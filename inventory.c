@@ -53,3 +53,26 @@ struct armor_t *get_armor_stats(struct inv_item_t *item) {
     int a = 2 + 3 * 5; // præcedens / precedence
     return &item->data.as_armor;
 }
+
+void print_item_info(struct inv_item_t item) {
+    printf("Item: %s\n", item.name);
+    switch (item.type) {
+        case ITEM_WEAPON:
+            printf(" Type: Weapon\n");
+            printf(" Damage: %d\n", item.data.as_weapon.damage);
+            printf(" Durability: %d\n", item.data.as_weapon.durability);
+            break;
+        case ITEM_ARMOR:
+            printf(" Type: Armor\n");
+            printf(" Protection: %d\n", item.data.as_armor.protection);
+            printf(" Durability: %d\n", item.data.as_armor.durability);
+            break;
+        case ITEM_CONSUMABLE:
+            printf(" Type: Consumable\n");
+            printf(" Effect: %s\n",
+                item.data.as_consumable.effect_type == LIFE ? "Life" : "Mana");
+            printf(" Amount: %d\n", item.data.as_consumable.amount);
+            printf(" Uses left: %d\n", item.data.as_consumable.uses_left);
+            break;
+    }
+}

@@ -19,5 +19,19 @@ int main(void) {
     if (armor != NULL) {
         printf("Den er så stærk her: %d\n", armor->protection);
     }
+
+    struct inv_item_t inventory[] = {
+        create_weapon("Iron Sword", 25, 100),
+        create_armor("Leather Vest", 15, 80),
+        create_life_potion(50, 3),
+        create_life_potion(50, 3),
+    };
+
+    printf("=== Player Inventory ===\n");
+    for (int i = 0; i < 4; i++) {
+        print_item_info(inventory[i]);
+        printf("\n");
+    }
+
     return 0;
 }
